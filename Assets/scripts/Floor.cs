@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour {
 
+    private float width;
+    private float length;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+        width = transform.localScale.x;
+        length = transform.localScale.z;
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public float GetWidth() {
+        return width;
+    }
+
+    public float GetLength() {
+        return length;
+    }
 }

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54791272467111672}
   - component: {fileID: 114025853324251244}
   - component: {fileID: 82681949836175574}
+  - component: {fileID: 114169940418200072}
   m_Layer: 0
   m_Name: Bowling-Ball
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!82 &82681949836175574
 AudioSource:
   m_ObjectHideFlags: 1
@@ -190,7 +191,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe48daea56b5bac44a7b6954db547fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchVelocity: {x: 0, y: 0, z: 1500}
+  isInPlay: 0
+--- !u!114 &114169940418200072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521105669987984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fa0ac1346a48340bb979c7d536e9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceScaler: 1
 --- !u!135 &135794989825115078
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BowlingBall))]
-public class DragLaunch : MonoBehaviour {
+public class SwipeLaunch : MonoBehaviour {
 
     private BowlingBall bowlingball;
     private Vector3 dragStartPos, dragEndPos;
@@ -20,7 +20,13 @@ public class DragLaunch : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+    }
 
+    public void Nudge(float amount) {
+        if (!bowlingball.isInPlay) {
+            transform.Translate(amount, 0, 0);
+            Debug.Log("Ball X Position: " + transform.position.x);
+        }
     }
 
     public void DragStart() {
