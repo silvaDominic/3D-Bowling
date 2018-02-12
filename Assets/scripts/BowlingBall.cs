@@ -11,9 +11,11 @@ public class BowlingBall : MonoBehaviour {
     private float leftFloorEdge;
     private float rightFloorEdge;
     private Floor floor;
+    private Vector3 startingPosition;
 
 	// Use this for initialization
 	void Start () {
+        startingPosition = gameObject.transform.position;
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
 
@@ -21,9 +23,6 @@ public class BowlingBall : MonoBehaviour {
         
         leftFloorEdge = -floor.GetWidth();
         rightFloorEdge = floor.GetWidth();
-
-        Debug.Log("Left Edge: " + leftFloorEdge / 2);
-        Debug.Log("Right Edge: " + rightFloorEdge / 2);
     }
 
     // Used for optional rotation mechanic
@@ -36,6 +35,16 @@ public class BowlingBall : MonoBehaviour {
         isInPlay = true;
         rigidbody.useGravity = true;
         rigidbody.velocity = launchSpeed;
+    }
+
+    public void Reset() {
+        Debug.Log("Resetting ball");
+        isInPlay = false;
+        rigidbody.useGravity = false;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        gameObject.transform.rotation = Quaternion.identity;
+        gameObject.transform.position = startingPosition;
     }
 
     // Update is called once per frame

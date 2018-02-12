@@ -4,19 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
-
+    public float pinCheckDuration = 3;
     public Text standingDisplay;
+
+    private GameObject pins;
     private bool ballEnteredBox = false;
+    private int previousStandingCount = -1;
+    private float lastChangeTime = 0;
+    private BowlingBall bowlingBall;
 
     // Use this for initialization
     void Start() {
-
+        pins = GameObject.Find("Pins");
+        bowlingBall = GameObject.FindObjectOfType<BowlingBall>();
     }
 
     // Update is called once per frame
     void Update() {
         if (ballEnteredBox) {
-            CheckSettledPins();
+            CheckStandingPins();
         }
     }
 
@@ -34,24 +40,42 @@ public class PinSetter : MonoBehaviour {
     private void OnTriggerEnter(Collider obj) {
         if (obj.GetComponent<BowlingBall>()) {
             ballEnteredBox = true;
-            CheckSettledPins(Time.time, 4.0f);
-            Debug.Log("Bowling ball entered");
             standingDisplay.color = Color.red;
         }
     }
 
-    private void OnTriggerExit(Collider obj) {
-        Debug.Log(obj);
-        if (obj.GetComponent<BowlingBall>()) {
+    private void CheckStandingPins() {
+        int currentStanding = CountStanding();
+
+        if (currentStanding != previousStandingCount) {
+            Debug.Log("Pins still moving");
+            lastChangeTime = Time.time;
+            previousStandingCount = currentStanding;
+            return;
+        }
+
+        Debug.Log("Pins settling...");
+
+        if (Time.time > (lastChangeTime + pinCheckDuration)) {
+            Debug.Log("Pins settled.");
+            PinsHaveSettled();
+            previousStandingCount = -1;
             ballEnteredBox = false;
-            Debug.Log("BowlingBall left");
         }
     }
 
-    private int CheckSettledPins(float startTime, float checkDuration) {
-        float endTime = startTime + checkDuration;
+    private void PinsHaveSettled() {
+        bowlingBall.Reset();
+        standingDisplay.color = Color.green;
+        standingDisplay.text = CountStanding().ToString();
+    }
 
-        return 10;
+    public void RaisePins() {
+        pins.transform.Translate(0, 90, 0);
+    }
+
+    public void LowerPins() {
+        pins.transform.Translate(0, 0, 0);
     }
 
 

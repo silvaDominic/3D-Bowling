@@ -17,8 +17,10 @@ public class CameraControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // If ball is in front of head pin
-        if (bowlingball.transform.position.z <= 1829f) {
-            gameObject.transform.position = bowlingball.transform.position + offset;
+        if (bowlingball != null) {
+            if (bowlingball.transform.position.z <= 1829f) {
+                gameObject.transform.position = bowlingball.transform.position + offset;
+            }
         }
 	}
 }
