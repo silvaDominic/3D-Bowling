@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
     public float pinCheckDuration = 3;
+    public float distToRaisePins = 80;
     public Text standingDisplay;
+    public GameObject pinSet;
 
-    private GameObject pins;
+    private GameObject pinSetParent;
     private bool ballEnteredBox = false;
     private int previousStandingCount = -1;
     private float lastChangeTime = 0;
@@ -15,14 +17,14 @@ public class PinSetter : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        pins = GameObject.Find("Pins");
+        pinSetParent = GameObject.Find("Pins");
         bowlingBall = GameObject.FindObjectOfType<BowlingBall>();
     }
 
     // Update is called once per frame
     void Update() {
         if (ballEnteredBox) {
-            CheckStandingPins();
+            CheckStandingAndUpdate();
         }
     }
 
@@ -37,6 +39,11 @@ public class PinSetter : MonoBehaviour {
         return pinCount;
     }
 
+    public void RenewPins() {
+        GameObject newPinSet = Instantiate(pinSet, new Vector3(0, 100, 1829), Quaternion.identity) as GameObject;
+        newPinSet.transform.parent = pinSetParent.transform.parent;
+    }
+
     private void OnTriggerEnter(Collider obj) {
         if (obj.GetComponent<BowlingBall>()) {
             ballEnteredBox = true;
@@ -44,7 +51,7 @@ public class PinSetter : MonoBehaviour {
         }
     }
 
-    private void CheckStandingPins() {
+    private void CheckStandingAndUpdate() {
         int currentStanding = CountStanding();
 
         if (currentStanding != previousStandingCount) {
@@ -71,13 +78,14 @@ public class PinSetter : MonoBehaviour {
     }
 
     public void RaisePins() {
-        pins.transform.Translate(0, 90, 0);
+        foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {
+            pin.Raise();
+        }
     }
 
     public void LowerPins() {
-        pins.transform.Translate(0, 0, 0);
+        foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {
+            pin.Lower();
+        }
     }
-
-
-
 }
