@@ -9,21 +9,27 @@ public class PinSetter : MonoBehaviour {
     public Text standingDisplay;
     public GameObject pinSet;
 
+    private bool ballLeftBox = false;
     private GameObject pinSetParent;
-    private bool ballEnteredBox = false;
+    private int lastSettledCount = 10;
     private int previousStandingCount = -1;
     private float lastChangeTime = 0;
     private BowlingBall bowlingBall;
+    private Animator anim;
+    private ActionMaster actionMaster;
 
     // Use this for initialization
     void Start() {
         pinSetParent = GameObject.Find("Pins");
         bowlingBall = GameObject.FindObjectOfType<BowlingBall>();
+        anim = gameObject.GetComponent<Animator>();
+        actionMaster = new ActionMaster();
     }
 
     // Update is called once per frame
     void Update() {
-        if (ballEnteredBox) {
+        if (ballLeftBox) {
+            standingDisplay.color = Color.red;
             CheckStandingAndUpdate();
         }
     }
@@ -44,13 +50,6 @@ public class PinSetter : MonoBehaviour {
         newPinSet.transform.parent = pinSetParent.transform.parent;
     }
 
-    private void OnTriggerEnter(Collider obj) {
-        if (obj.GetComponent<BowlingBall>()) {
-            ballEnteredBox = true;
-            standingDisplay.color = Color.red;
-        }
-    }
-
     private void CheckStandingAndUpdate() {
         int currentStanding = CountStanding();
 
@@ -67,12 +66,29 @@ public class PinSetter : MonoBehaviour {
             Debug.Log("Pins settled.");
             PinsHaveSettled();
             previousStandingCount = -1;
-            ballEnteredBox = false;
+            ballLeftBox = false;
         }
     }
 
     private void PinsHaveSettled() {
+        int standing = CountStanding();
+        int pinFall = lastSettledCount - standing;
+        lastSettledCount = standing;
+
+        ActionMaster.Action action = actionMaster.Bowl(pinFall);
+        Debug.Log("Pin Fall: " + pinFall + ", Action: " + action);
+
+        if (action == ActionMaster.Action.Tidy) {
+            anim.SetTrigger("triggerCleanUp");
+        } else if (action == ActionMaster.Action.EndGame) {
+            throw new UnityException("Not sure how to handle END GAME scenario");
+        } else {
+            anim.SetTrigger("triggerReset");
+            lastSettledCount = 10;
+        }
+
         bowlingBall.Reset();
+        previousStandingCount = -1;
         standingDisplay.color = Color.green;
         standingDisplay.text = CountStanding().ToString();
     }
@@ -87,5 +103,9 @@ public class PinSetter : MonoBehaviour {
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {
             pin.Lower();
         }
+    }
+
+    public void SetBallLeftBox(bool state) {
+        this.ballLeftBox = state;
     }
 }

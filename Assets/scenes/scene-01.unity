@@ -135,6 +135,7 @@ Transform:
   m_Children:
   - {fileID: 2031196770}
   - {fileID: 1403429813}
+  - {fileID: 1148581448}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -456,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 138935061}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -50, z: 2000}
-  m_LocalScale: {x: 1500, y: 0, z: 1500}
+  m_LocalScale: {x: 50000, y: 0, z: 50000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -519,13 +520,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 227599125}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.33276036, y: 0.11360454, z: -0.0005939689, w: 0.9361433}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 38.547, y: 15.751, z: 5.466}
 --- !u!1 &314389542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1034,59 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 211d30c246ba9c14f84a251f9ca29855, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1148581447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1148581448}
+  - component: {fileID: 1148581450}
+  - component: {fileID: 1148581449}
+  m_Layer: 0
+  m_Name: Lane-Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1148581448
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148581447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 81723037}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1148581449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148581447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00059262aa0916e408699ab1f256652c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1148581450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148581447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 105, y: 120, z: 1760}
+  m_Center: {x: 0, y: 60, z: 880}
 --- !u!1001 &1270837312
 Prefab:
   m_ObjectHideFlags: 0
@@ -1070,7 +1124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4943001575901108, guid: 9a18fe477def9c845b852a7359502fa4, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4943001575901108, guid: 9a18fe477def9c845b852a7359502fa4, type: 2}
       propertyPath: m_LocalScale.x
@@ -1247,7 +1301,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1568764620}
   - component: {fileID: 1568764623}
-  - component: {fileID: 1568764622}
   - component: {fileID: 1568764621}
   - component: {fileID: 1568764624}
   m_Layer: 0
@@ -1286,19 +1339,7 @@ MonoBehaviour:
   distToRaisePins: 80
   standingDisplay: {fileID: 1753180384}
   pinSet: {fileID: 1956382862135524, guid: 23f74d23844ae4b4d9fc792ff3c9b03c, type: 2}
-  scoreMaster: {fileID: 0}
---- !u!65 &1568764622
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1568764619}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  ballLeftBox: 0
 --- !u!33 &1568764623
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1699,6 +1740,7 @@ GameObject:
   - component: {fileID: 1870550658}
   - component: {fileID: 1870550657}
   - component: {fileID: 1870550656}
+  - component: {fileID: 1870550655}
   m_Layer: 0
   m_Name: Pin-Camera
   m_TagString: Untagged
@@ -1706,6 +1748,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!45 &1870550655
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870550654}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 36ebb1f81aa054bd49704f3d17f62c4d, type: 2}
 --- !u!92 &1870550656
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1738,7 +1788,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 46.1
+  field of view: 78
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

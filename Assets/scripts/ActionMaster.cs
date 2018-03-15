@@ -7,10 +7,10 @@ public class ActionMaster {
     public enum Action {Tidy, Reset, EndTurn, EndGame};
     public enum BowlResult {Strike, Spare, UnderTen};
 
-    private BowlResult previousBowl;
+    private BowlResult previousBowlResult; // Used for evaluating special cases
     private Action actionResult;
-    private int[] balls = new int[21];
-    private int ball = 1;
+    private int[] bowls = new int[21];
+    private int bowl = 1;
 
     public Action Bowl(int pins) {
 
@@ -18,35 +18,39 @@ public class ActionMaster {
         AddToBowls(pins);
 
         // Always return End Game on ball 21
-        if (ball == 21) {
+        if (bowl == 21) {
             this.actionResult = Action.EndGame;
         }
 
-        switch (CheckBowlResult(pins)) {
+        switch (EvaluateBowl(pins)) {
+            // Handles actions for strike conditions
             case BowlResult.Strike:
-                if (this.ball >= 19 && this.ball < 21) {
+                if (this.bowl >= 19 && this.bowl < 21) {
                     this.actionResult = Action.Reset;
-                } else if (this.ball < 19) {
+                } else if (this.bowl < 19) {
+                    bowl++;
                     this.actionResult = Action.EndTurn;
                 }
-                previousBowl = BowlResult.Strike;
+                previousBowlResult = BowlResult.Strike;
                 break;
 
+            // Handles action for spare conditions
             case BowlResult.Spare:
-                if (this.ball == 20) {
+                if (this.bowl == 20) {
                     actionResult = Action.Reset;
-                } else if (this.ball < 20) {
+                } else if (this.bowl < 20) {
                     actionResult = Action.EndTurn;
                 }
-                previousBowl = BowlResult.Spare;
+                previousBowlResult = BowlResult.Spare;
                 break;
 
+            // Handles action for under-ten conditions
             case BowlResult.UnderTen:
-                if (this.ball % 2 != 0 && this.ball != 21) { // If middle of frame
+                if (this.bowl % 2 != 0 && this.bowl != 21) { // If middle of frame
                     actionResult = Action.Tidy;
-                } else if (this.ball % 2 == 0) {  // If end of frame
-                    if (this.ball == 20) {
-                        if (previousBowl == BowlResult.Strike) {
+                } else if (this.bowl % 2 == 0) {  // If end of frame
+                    if (this.bowl == 20) { // Special case for bowl 20
+                        if (previousBowlResult == BowlResult.Strike) {
                             actionResult = Action.Tidy;
                         } else {
                             actionResult = Action.EndGame;
@@ -55,21 +59,23 @@ public class ActionMaster {
                         actionResult = Action.EndTurn;
                     }
                 }
-                previousBowl = BowlResult.UnderTen;
+                previousBowlResult = BowlResult.UnderTen;
                 break;
 
             default:
                 throw new UnityException("Not sure what action to return.");
         }
 
-        this.ball++;
+        if (bowl != 21) {
+            this.bowl++;
+        }
         return actionResult;
     }
 
-    private BowlResult CheckBowlResult(int pins) {
+    private BowlResult EvaluateBowl(int pins) {
 
         if (pins > 10 || pins < 0) {
-            throw new UnityException("Invalid pin count argument");
+            throw new UnityException("Invalid pin count argument of " + pins);
         }
 
         if (pins == 10) {
@@ -80,9 +86,9 @@ public class ActionMaster {
     }
 
     private BowlResult CheckForSpare(int pins) {
-        if (this.ball > 1) {
-            int previousBall = this.balls[this.ball - 2];
-            if (pins + previousBall == 10) {
+        if (this.bowl > 1) {
+            int lastBowl = this.bowls[this.bowl - 2];
+            if (pins + lastBowl == 10) {
                 return BowlResult.Spare;
             }
         }
@@ -90,6 +96,14 @@ public class ActionMaster {
     }
 
     private void AddToBowls(int pins) {
-        this.balls[this.ball - 1] = pins;
+        this.bowls[this.bowl - 1] = pins;
+    }
+
+    public int GetBowlCount() {
+        return this.bowl;
+    }
+
+    public int GetBowlValue() {
+        return this.bowls[this.bowl];
     }
 }

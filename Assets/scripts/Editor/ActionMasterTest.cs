@@ -52,6 +52,14 @@ public class ActionMasterTest {
         Assert.AreEqual(endTurn, actionMaster.Bowl(8));
     }
 
+    // Bowl a unique spare of 0-10 on a regular frame
+    // Returns tidy, end-turn
+    [Test]
+    public void T04_BowlUniqueSpareReturnsEndTurn() {
+        Assert.AreEqual(tidy, actionMaster.Bowl(0));
+        Assert.AreEqual(endTurn, actionMaster.Bowl(10));
+    }
+
     // --------------------- LAST FRAME SCENARIOS ------------------------
 
     // Under-ten on last frame
@@ -116,5 +124,21 @@ public class ActionMasterTest {
         Assert.AreEqual(reset, actionMaster.Bowl(10));
         Assert.AreEqual(reset, actionMaster.Bowl(10));
         Assert.AreEqual(endGame, actionMaster.Bowl(10));
+    }
+
+    // Perfect game
+    // Returns reset, reset, end game
+    // Returns 21 as last bowl
+    [Test]
+    public void T10_BowlPerfectGame() {
+        int[] balls = { 10, 10, 10, 10, 10, 10, 10, 10, 10 };
+        foreach (int ball in balls) {
+            actionMaster.Bowl(ball);
+        }
+        Assert.AreEqual(reset, actionMaster.Bowl(10));
+        Assert.AreEqual(reset, actionMaster.Bowl(10));
+        Assert.AreEqual(endGame, actionMaster.Bowl(10));
+
+        Assert.AreEqual(21, actionMaster.GetBowlCount());
     }
 }
