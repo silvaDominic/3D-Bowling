@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
+using System.Linq;
 
 public class ActionMasterTest {
 
+    private List<int> pinFalls;
     private ActionMaster.Action endTurn = ActionMaster.Action.EndTurn;
     private ActionMaster.Action endGame = ActionMaster.Action.EndGame;
     private ActionMaster.Action tidy = ActionMaster.Action.Tidy;
@@ -24,7 +27,7 @@ public class ActionMasterTest {
 
     [SetUp]
     public void SetUp() {
-        actionMaster = new ActionMaster();
+        pinFalls = new List<int>();
     }
 
     // ------------------- REGULAR FRAME SCENARIOS ------------------------
@@ -34,111 +37,81 @@ public class ActionMasterTest {
     // Returns tidy
     [Test]
     public void T01_BowlUTReturnsTidy() {
-        Assert.AreEqual(tidy, actionMaster.Bowl(8));
+        pinFalls.Add(8);
+        Assert.AreEqual(tidy, ActionMaster.NextAction(pinFalls));
     }
 
     // Strike on regular frame
     // Returns end-turn
     [Test]
     public void T02_OneStrikeReturnsEndTurn() {
-        Assert.AreEqual(endTurn, actionMaster.Bowl(10));
+        pinFalls.Add(10);
+        Assert.AreEqual(endTurn, ActionMaster.NextAction(pinFalls));
     }
 
     // Bowl a spare on a regular frame
-    // Returns tidy, end-turn
+    // Returns end-turn
     [Test]
     public void T03_BowlSpareReturnsEndTurn() {
-        Assert.AreEqual(tidy, actionMaster.Bowl(2));
-        Assert.AreEqual(endTurn, actionMaster.Bowl(8));
+        int[] rolls = { 2, 8 };
+        Assert.AreEqual(endTurn, ActionMaster.NextAction(rolls.ToList()));
     }
 
     // Bowl a unique spare of 0-10 on a regular frame
-    // Returns tidy, end-turn
+    // Returns end-turn
     [Test]
     public void T04_BowlUniqueSpareReturnsEndTurn() {
-        Assert.AreEqual(tidy, actionMaster.Bowl(0));
-        Assert.AreEqual(endTurn, actionMaster.Bowl(10));
+        int[] rolls = { 0, 10 };
+        Assert.AreEqual(endTurn, ActionMaster.NextAction(rolls.ToList()));
     }
 
     // --------------------- LAST FRAME SCENARIOS ------------------------
 
     // Under-ten on last frame
-    // Returns tidy and endGame
+    // Returns endGame
     [Test]
     public void T04_LastFrame_UTUT() {
-        int[] balls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1 };
-        foreach (int ball in balls) {
-            actionMaster.Bowl(ball);
-        }
-        Assert.AreEqual(tidy, actionMaster.Bowl(3));
-        Assert.AreEqual(endGame, actionMaster.Bowl(4));
+        int[] rolls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1, 3, 4 };
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
 
     // Strike on last frame 10-1, under-ten on last frame 10-2 & 10-3
-    // Returns reset, tidy, endGame
+    // Returns endGame
     [Test]
     public void T05_LastFrame_StrikeUTUT() {
-        int[] balls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1 };
-        foreach (int ball in balls) {
-            actionMaster.Bowl(ball);
-        }
-        Assert.AreEqual(reset, actionMaster.Bowl(10));
-        Assert.AreEqual(tidy, actionMaster.Bowl(3));
-        Assert.AreEqual(endGame, actionMaster.Bowl(4));
+        int[] rolls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1, 10, 3, 4 };
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
 
     // Spare on last frame 10-1, strike on last frame 10-3
-    // Returns tidy, reset, and endgame
+    // Returns end-game
     [Test]
     public void T06_LastFrame_SpareStrike() {
-        int[] balls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1 };
-        foreach (int ball in balls) {
-            actionMaster.Bowl(ball);
-        }
-        Assert.AreEqual(tidy, actionMaster.Bowl(3));
-        Assert.AreEqual(reset, actionMaster.Bowl(7));
-        Assert.AreEqual(endGame, actionMaster.Bowl(10));
+        int[] rolls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1, 3, 7, 10 };
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
 
     // Strike on last frame, spare on last frame 10-3
-    // Returns reset, tidy, and end game
+    // Returns end-game
     [Test]
     public void T07_LastFrame_StrikeSpare() {
-        int[] balls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1};
-        foreach (int ball in balls) {
-            actionMaster.Bowl(ball);
-        }
-        Assert.AreEqual(reset, actionMaster.Bowl(10));
-        Assert.AreEqual(tidy, actionMaster.Bowl(7));
-        Assert.AreEqual(endGame, actionMaster.Bowl(3));
+        int[] rolls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1, 10, 7, 3 };
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
 
     // All strikes on last frame
-    // Returns reset, reset, end game
+    // Returns end-game
     [Test]
     public void T08_LastFrame_StrikeStrikeStrike() {
-        int[] balls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1 };
-        foreach (int ball in balls) {
-            actionMaster.Bowl(ball);
-        }
-        Assert.AreEqual(reset, actionMaster.Bowl(10));
-        Assert.AreEqual(reset, actionMaster.Bowl(10));
-        Assert.AreEqual(endGame, actionMaster.Bowl(10));
+        int[] rolls = { 3, 4, 6, 2, 4, 1, 3, 5, 2, 4, 2, 2, 1, 4, 5, 3, 6, 1, 10, 10, 10 };
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
 
     // Perfect game
-    // Returns reset, reset, end game
-    // Returns 21 as last bowl
+    // Returns end-game
     [Test]
     public void T10_BowlPerfectGame() {
-        int[] balls = { 10, 10, 10, 10, 10, 10, 10, 10, 10 };
-        foreach (int ball in balls) {
-            actionMaster.Bowl(ball);
-        }
-        Assert.AreEqual(reset, actionMaster.Bowl(10));
-        Assert.AreEqual(reset, actionMaster.Bowl(10));
-        Assert.AreEqual(endGame, actionMaster.Bowl(10));
-
-        Assert.AreEqual(21, actionMaster.GetBowlCount());
+        int[] rolls = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
 }

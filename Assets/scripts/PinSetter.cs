@@ -54,7 +54,7 @@ public class PinSetter : MonoBehaviour {
         int currentStanding = CountStanding();
 
         if (currentStanding != previousStandingCount) {
-            Debug.Log("Pins still moving");
+            //Debug.Log("Pins still moving");
             lastChangeTime = Time.time;
             previousStandingCount = currentStanding;
             return;
@@ -63,7 +63,7 @@ public class PinSetter : MonoBehaviour {
         Debug.Log("Pins settling...");
 
         if (Time.time > (lastChangeTime + pinCheckDuration)) {
-            Debug.Log("Pins settled.");
+            //Debug.Log("Pins settled.");
             PinsHaveSettled();
             previousStandingCount = -1;
             ballLeftBox = false;
@@ -95,7 +95,10 @@ public class PinSetter : MonoBehaviour {
 
     public void RaisePins() {
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {
-            pin.Raise();
+            if (pin.IsStanding()) {
+                pin.transform.rotation = Quaternion.Euler(270f, 0, 0);
+                pin.Raise();
+            }
         }
     }
 

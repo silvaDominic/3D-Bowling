@@ -17,8 +17,6 @@ public class Shredder : MonoBehaviour {
     private void OnTriggerEnter(Collider obj) {
         if (obj.GetComponentInParent<Pin>()) {
             Destroy(obj.GetComponentInParent<Pin>().gameObject);
-        } else if (obj.GetComponentInParent<BowlingBall>()) {
-            
         }
     }
 }

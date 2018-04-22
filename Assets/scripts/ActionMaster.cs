@@ -12,6 +12,18 @@ public class ActionMaster {
     private int[] bowls = new int[21];
     private int bowl = 1;
 
+    public static Action NextAction(List<int> pinFalls) {
+
+        ActionMaster actionMaster = new ActionMaster();
+        Action currentAction = new Action();
+
+        foreach (int pinFall in pinFalls) {
+            currentAction = actionMaster.Bowl(pinFall);
+        }
+
+        return currentAction;
+    }
+
     public Action Bowl(int pins) {
 
         // Add pins to bowl array
