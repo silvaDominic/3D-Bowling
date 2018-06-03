@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1858
     height: 987
-  m_MinSize: {x: 681, y: 492}
+  m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 1956
+  controlID: 25
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 1957
+  controlID: 26
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -153,11 +153,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1316
-    height: 631
+    height: 599
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 1958
+  controlID: 27
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,8 +174,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 333
-    height: 631
+    width: 395
+    height: 599
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
@@ -197,10 +197,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 333
+    x: 395
     y: 0
-    width: 983
-    height: 631
+    width: 921
+    height: 599
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 14}
@@ -225,9 +225,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 631
+    y: 599
     width: 1316
-    height: 356
+    height: 388
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 19}
@@ -257,10 +257,10 @@ MonoBehaviour:
     y: 0
     width: 542
     height: 987
-  m_MinSize: {x: 275, y: 271}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 277, y: 292}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 1853
+  controlID: 130
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -278,7 +278,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 542
-    height: 650
+    height: 649
   m_MinSize: {x: 277, y: 71}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
@@ -302,9 +302,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 650
+    y: 649
     width: 542
-    height: 337
+    height: 338
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 23}
@@ -334,11 +334,11 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 397
+    x: 459
     y: 92
-    width: 979
-    height: 610
-  m_MaximizeOnPlay: 1
+    width: 917
+    height: 578
+  m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 01000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -346,10 +346,10 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-    m_HBaseRangeMin: -370.625
-    m_HBaseRangeMax: 370.625
-    m_VBaseRangeMin: -296.5
-    m_VBaseRangeMax: 296.5
+    m_HBaseRangeMin: -350.625
+    m_HBaseRangeMax: 350.625
+    m_VBaseRangeMin: -280.5
+    m_VBaseRangeMax: 280.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -366,25 +366,25 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-      width: 979
-      height: 593
+      width: 917
+      height: 561
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 489.5, y: 296.5}
+    m_Translation: {x: 458.5, y: 280.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -489.5
-      y: -296.5
-      width: 979
-      height: 593
+      x: -458.5
+      y: -280.5
+      width: 917
+      height: 561
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 979, y: 610}
+  m_LastWindowPixelSize: {x: 917, y: 578}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -412,13 +412,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 62
     y: 92
-    width: 331
-    height: 610
+    width: 393
+    height: 578
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 64fbffff
-    m_LastClickedID: -1180
-    m_ExpandedIDs: 1afcffff00000000ca260000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 18fcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -518,9 +518,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 62
-    y: 723
+    y: 691
     width: 1314
-    height: 335
+    height: 367
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -544,9 +544,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 62
-    y: 723
+    y: 691
     width: 1314
-    height: 335
+    height: 367
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -559,19 +559,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/START Pack/Images
+    - Assets/scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/START Pack/Images
+  - Assets/scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\course-work\udemy\intro-to-unity\3D-bowling
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 38}
-    m_SelectedIDs: 88260000
-    m_LastClickedID: 9864
-    m_ExpandedIDs: 00000000282600006e260000762600007c260000882600008e26000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 80260000
+    m_LastClickedID: 9856
+    m_ExpandedIDs: 00000000442600008a2600009226000098260000a426000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -599,7 +599,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000282600006e260000762600007c260000882600008e26000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000442600008a2600009226000098260000a4260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -726,7 +726,7 @@ MonoBehaviour:
     x: 1380
     y: 92
     width: 540
-    height: 629
+    height: 628
   m_IsSceneBased: 0
   m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
@@ -796,7 +796,7 @@ MonoBehaviour:
       name: Assembly-CSharp-Editor.dll
       fullName: D:/course-work/udemy/intro-to-unity/3D-bowling/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
       resultStatus: 1
-      duration: 0.3624149
+      duration: 0.3118065
       messages: 
       output: 
       stacktrace: 
@@ -807,7 +807,7 @@ MonoBehaviour:
       name: ActionMasterTest
       fullName: ActionMasterTest
       resultStatus: 1
-      duration: 0.3511688
+      duration: 0.3008851
       messages: 
       output: 
       stacktrace: 
@@ -818,7 +818,7 @@ MonoBehaviour:
       name: ScoreMasterTestWithEnumeratorPasses
       fullName: ActionMasterTest.ScoreMasterTestWithEnumeratorPasses
       resultStatus: 1
-      duration: 0.0174661
+      duration: 0.016555
       messages: 
       output: 
       stacktrace: 
@@ -829,7 +829,7 @@ MonoBehaviour:
       name: T01_BowlUTReturnsTidy
       fullName: ActionMasterTest.T01_BowlUTReturnsTidy
       resultStatus: 1
-      duration: 0.0099919
+      duration: 0.0262798
       messages: 
       output: 
       stacktrace: 
@@ -840,7 +840,7 @@ MonoBehaviour:
       name: T02_OneStrikeReturnsEndTurn
       fullName: ActionMasterTest.T02_OneStrikeReturnsEndTurn
       resultStatus: 1
-      duration: 0.0099392
+      duration: 0.0102313
       messages: 
       output: 
       stacktrace: 
@@ -851,7 +851,7 @@ MonoBehaviour:
       name: T03_BowlSpareReturnsEndTurn
       fullName: ActionMasterTest.T03_BowlSpareReturnsEndTurn
       resultStatus: 1
-      duration: 0.0098709
+      duration: 0.0108931
       messages: 
       output: 
       stacktrace: 
@@ -862,7 +862,7 @@ MonoBehaviour:
       name: T04_BowlUniqueSpareReturnsEndTurn
       fullName: ActionMasterTest.T04_BowlUniqueSpareReturnsEndTurn
       resultStatus: 1
-      duration: 0.0100283
+      duration: 0.0108087
       messages: 
       output: 
       stacktrace: 
@@ -873,7 +873,7 @@ MonoBehaviour:
       name: T04_LastFrame_UTUT
       fullName: ActionMasterTest.T04_LastFrame_UTUT
       resultStatus: 1
-      duration: 0.0097026
+      duration: 0.0106634
       messages: 
       output: 
       stacktrace: 
@@ -884,7 +884,7 @@ MonoBehaviour:
       name: T05_LastFrame_StrikeUTUT
       fullName: ActionMasterTest.T05_LastFrame_StrikeUTUT
       resultStatus: 1
-      duration: 0.0099536
+      duration: 0.010939
       messages: 
       output: 
       stacktrace: 
@@ -895,7 +895,7 @@ MonoBehaviour:
       name: T06_LastFrame_SpareStrike
       fullName: ActionMasterTest.T06_LastFrame_SpareStrike
       resultStatus: 1
-      duration: 0.0104455
+      duration: 0.0104115
       messages: 
       output: 
       stacktrace: 
@@ -906,9 +906,9 @@ MonoBehaviour:
       name: T07_LastFrame_StrikeSpare
       fullName: ActionMasterTest.T07_LastFrame_StrikeSpare
       resultStatus: 1
-      duration: 0.0547879
+      duration: 0.0106694
       messages: 
-      output: "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n"
+      output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -917,9 +917,9 @@ MonoBehaviour:
       name: T08_LastFrame_StrikeStrikeStrike
       fullName: ActionMasterTest.T08_LastFrame_StrikeStrikeStrike
       resultStatus: 1
-      duration: 0.0409129
+      duration: 0.0101229
       messages: 
-      output: "1\r\n0\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n"
+      output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
@@ -928,19 +928,19 @@ MonoBehaviour:
       name: T10_BowlPerfectGame
       fullName: ActionMasterTest.T10_BowlPerfectGame
       resultStatus: 1
-      duration: 0.0267932
+      duration: 0.0109635
       messages: 
-      output: "1\r\n0\r\n3\r\n5\r\n7\r\n9\r\n11\r\n13\r\n15\r\n17\r\n19\r\n"
+      output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    m_ResultText: T03_BowlSpareReturnsEndTurn (0.010s)
+    m_ResultText: T10_BowlPerfectGame (0.011s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 241ba75c
-      m_LastClickedID: 1554455332
+      m_SelectedIDs: 351e6188
+      m_LastClickedID: -2006901195
       m_ExpandedIDs: a8f177a88222cfd15aea1161ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -984,8 +984,8 @@ MonoBehaviour:
     x: 1380
     y: 92
     width: 540
-    height: 629
-  m_ScrollPosition: {x: 0, y: 711.9551}
+    height: 628
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -125
@@ -1015,18 +1015,18 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 1380
-    y: 742
+    y: 741
     width: 540
-    height: 316
+    height: 317
   m_SceneLighting: 1
-  lastFramingTime: 37.784835921883925
+  lastFramingTime: 1248.1289163846243
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 3, z: 0}
+    m_Target: {x: 1378.2601, y: 172.8689, z: 790.7868}
     speed: 2
-    m_Value: {x: 0, y: 3, z: 0}
+    m_Value: {x: 1378.2601, y: 172.8689, z: 790.7868}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -1049,13 +1049,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.12779123, y: 0.27723035, z: -0.037231576, w: -0.95153904}
+    m_Target: {x: -0.045963578, y: 0.66263014, z: -0.040803336, w: -0.7464207}
     speed: 2
-    m_Value: {x: -0.12779123, y: 0.27723038, z: -0.037231576, w: -0.9515391}
+    m_Value: {x: -0.045963578, y: 0.66263014, z: -0.040803336, w: -0.7464207}
   m_Size:
-    m_Target: 22
+    m_Target: 61.62714
     speed: 2
-    m_Value: 22
+    m_Value: 61.62714
   m_Ortho:
     m_Target: 0
     speed: 2

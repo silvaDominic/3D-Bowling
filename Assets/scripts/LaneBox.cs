@@ -10,14 +10,4 @@ public class LaneBox : MonoBehaviour {
 	void Start () {
         pinSetter = GameObject.FindObjectOfType<PinSetter>();
 	}
-
-    private void OnTriggerExit(Collider collider) {
-
-        if (collider.name == "Bowling-Ball") {
-            pinSetter.SetBallLeftBox(true);
-            Debug.Log("Ball left box");
-        } else {
-            Debug.Log("Something went wrong");
-        }
-    }
 }

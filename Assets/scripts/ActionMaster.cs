@@ -24,7 +24,7 @@ public class ActionMaster {
         return currentAction;
     }
 
-    public Action Bowl(int pins) {
+    private Action Bowl(int pins) {
 
         // Add pins to bowl array
         AddToBowls(pins);
